@@ -114,6 +114,16 @@
 			<div class="frame">
 				<FrameStandard {bannerName} />
 			</div>
+		{:else if type === 'member'}
+			<BannerImage
+				isError={imageError}
+				src={$assets[bannerName]}
+				alt="Member Banner"
+				wrapperClass="card-image {imageError ? 'skeleton' : ''}"
+			/>
+			<div class="frame">
+				<FrameStandard {bannerName} />
+			</div>
 		{/if}
 
 		<div class="info">

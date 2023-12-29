@@ -85,14 +85,14 @@ export const initializeBanner = async ({ patch, phase }) => {
 		const { banners } = data.find((b) => b.phase === phase);
 		const { events, weapons, standardVersion: stdver } = banners;
 		const { featured: stdFeatured } = standard.find(({ version }) => stdver === version) || {};
-		const { featured: memFeatured } = standard.find(({ version }) => stdver === version) || {};
+		const { featured: memFeatured } = member.find(({ version }) => stdver === version) || {};
 		const charEventBanner = {
 			type: 'character-event',
 			rateup: events.rateup,
 			stdver
 		};
 
-		list.push({ type: 'standard', stdver, ...memFeatured});
+		list.push({ type: 'member', stdver, ...memFeatured});
 
 		events.featured.forEach((eventdata) => list.push({ ...eventdata, ...charEventBanner }));
 		list.push({ type: 'weapon-event', stdver, ...weapons });

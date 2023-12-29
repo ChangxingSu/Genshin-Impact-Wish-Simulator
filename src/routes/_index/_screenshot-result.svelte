@@ -91,12 +91,12 @@
 
 	<div class="wrapper" in:scale={{ opacity: 1, start: 1.1 }}>
 		<div class="letshare">
-			{#if canshare}
+			<!-- {#if canshare}
 				<div class="copy">
 					<span class="text">{shareLink}</span>
 					<button title="Copy link" on:click={copyHandle}> <i class="gi-link" /> </button>
 				</div>
-			{/if}
+			{/if} -->
 
 			<button class="save" title="Save To Your Device" on:click={saveHandler}>
 				<i class="gi-save" />

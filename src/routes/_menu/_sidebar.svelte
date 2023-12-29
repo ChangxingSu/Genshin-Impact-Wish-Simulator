@@ -13,6 +13,10 @@
 			<button on:click={() => selectMenu('options')}> {$t('menu.options')} </button>
 		</div>
 
+		<!-- <div class="menu-item" class:active={activeContent === 'nameImport'}>
+			<button on:click={() => selectMenu('nameImport')}> {$t('menu.nameImport')} </button>
+		</div> -->
+
 		<!-- <div class="menu-item" class:active={activeContent === 'customBanner'}>
 			<button on:click={() => selectMenu('customBanner')}> {$t('menu.customBanner')} </button>
 		</div> -->

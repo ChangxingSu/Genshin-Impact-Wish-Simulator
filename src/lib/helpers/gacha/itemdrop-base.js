@@ -1,6 +1,7 @@
 import { standard } from '$lib/data/banners/standard.json';
 import { data as weaponsDB } from '$lib/data/weapons.json';
 import { data as charsDB, onlyStandard } from '$lib/data/characters.json';
+import { data as memberDB } from '$lib/data/members.json';
 import { getRate, prob } from './probabilities';
 import { guaranteedStatus } from '../dataAPI/api-localstore';
 
@@ -45,6 +46,16 @@ const getAllWeapons = (star) => {
 			return arr;
 		});
 };
+
+export const getMemberItem = () => {
+	return memberDB
+		.map((arr) => {
+			arr.type = 'member';
+			arr.weaponType = "catalyst";
+			arr.rarity = 3;
+			return arr;
+		}); 
+}
 
 export const getCharDetails = (charName) => {
 	if (!charName) return {};

@@ -65,6 +65,7 @@
 	let onWish = getContext('onWish');
 
 	const doRoll = async (count, bannerToRoll) => {
+
 		rollCount = count;
 		multi = count > 1;
 		const tmp = [];
@@ -88,7 +89,7 @@
 	setContext('doRoll', doRoll);
 
 	const updateFatesBalance = (banner) => {
-		const isAcquaint = ['beginner', 'standard'].includes(banner);
+		const isAcquaint = ['beginner', 'standard', 'member'].includes(banner);
 		const funds = isAcquaint ? acquaint : intertwined;
 		funds.update((n) => {
 			const afterUpdate = n - (banner === 'beginner' && rollCount > 1 ? 8 : rollCount);
@@ -140,11 +141,15 @@
 		const autoSkip = localConfig.get('autoskip');
 		if (autoSkip) return showSplashArt({ skip: true });
 
-		const stars = result.map(({ rarity }) => rarity);
-		single = stars.length === 1;
-		meteorStar = 3;
-		if (stars.includes(4)) meteorStar = 4;
-		if (stars.includes(5)) meteorStar = 5;
+		if (bannerType === 'member') {
+			meteorStar = Math.floor(Math.random() * 3) + 3;
+		} else {
+			const stars = result.map(({ rarity }) => rarity);
+			single = stars.length === 1;
+			meteorStar = 3;
+			if (stars.includes(4)) meteorStar = 4;
+			if (stars.includes(5)) meteorStar = 5;
+		}
 		showMeteor = true;
 	};
 
@@ -194,7 +199,7 @@
 <div class="wish-container" class:show={showMeteor || showWishResult}>
 	<Meteor show={showMeteor} isSingle={single} rarity={meteorStar} />
 	{#if showWishResult}
-		<WishResult list={result} skip={skipSplashArt} />
+		<WishResult list={result} skip={skipSplashArt} bannerType={bannerType} />
 	{/if}
 </div>
 

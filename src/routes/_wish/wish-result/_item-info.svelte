@@ -9,6 +9,7 @@
 	export let custom = false;
 
 	export let itemName = '';
+	export let chineseChar = '';
 	export let type = '';
 	export let vision = '';
 	export let weaponType = '';
@@ -35,6 +36,8 @@
 		<div class="text" class:animate={!staticMode} use:removeAnimClass>
 			{#if custom}
 				{itemName}
+			{:else if type === 'member'}
+				{chineseChar}
 			{:else if type === 'outfit'}
 				{$t(`outfit.item.${outfitName}.name`)}
 			{:else if weaponType}

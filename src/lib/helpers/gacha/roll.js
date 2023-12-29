@@ -13,6 +13,25 @@ const { addHistory } = HistoryManager;
  * @returns Wish Result Object
  */
 const roll = async (banner, WishInstance, indexOfBanner) => {
+	if (banner === "member") {
+
+		// Get Item
+		const randomItem = WishInstance.getItem(5, banner, indexOfBanner);
+		// const { manual, wish } = owneditem.put({ itemID: randomItem.itemID });
+		// const numberOfOwnedItem = manual + wish - 1;
+		// const isNew = numberOfOwnedItem < 1;
+		let pity = 1;
+		const isNew = false;
+
+		// Milestone Bonus (Stardust or Starglitter)
+		const bonusType = randomItem.rarity === 3 ? 'stardust' : 'starglitter';
+		const bonusQty = 20;
+
+		const result = { pity, isNew, bonusType, bonusQty, ...randomItem };
+		return result;
+	}
+
+
 	const pity5 = localPity.get(`pity5-${banner}`) + 1;
 	const pity4 = localPity.get(`pity4-${banner}`) + 1;
 	const maxPity = getRate(banner, 'max5');

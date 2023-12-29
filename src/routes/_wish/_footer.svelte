@@ -53,10 +53,19 @@
 
 	const roll = getContext('doRoll');
 	const handleSingleRollClick = () => {
+		if (bannerType === 'member') {
+			console.log('handleSingleRollClick');
+			// return;
+		}
+
 		playSfx('roll');
 		roll(1, bannerType);
 	};
 	const handleMultiRollClick = () => {
+		if (bannerType === 'member') {
+			console.log('handleMultiRollClick');
+			// return;
+		}
 		playSfx('roll');
 		roll(isBeginner ? 10 : $multipull, bannerType);
 	};

@@ -49,8 +49,8 @@
 	const navigate = getContext('navigate');
 
 	const previousClick = () => {
-		navigate('allbanners');
-		playSfx();
+		// navigate('allbanners');
+		// playSfx();
 	};
 
 	const handleMenu = getContext('handleMenu');

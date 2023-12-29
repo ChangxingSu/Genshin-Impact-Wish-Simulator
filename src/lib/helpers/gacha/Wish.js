@@ -1,6 +1,7 @@
 import { standard } from '$lib/data/banners/standard.json';
 import characterWish from './wishCharacter';
 import beginerWish from './wishBeginner';
+import memberWish from './wishMember';
 import weaponWish from './wishWeapon';
 import standardWish from './wishStandard';
 import roll from './roll';
@@ -79,11 +80,20 @@ const WISH = {
 		return result;
 	},
 
+	_memberWish(rarity) {
+		const { _standardVer: stdver, _phase: phase, _version: version } = this;
+		const memberBanner = memberWish.init({ stdver, phase, version });
+		const result = memberBanner.get(rarity);
+		result.bannerName =  `wanderlust-invocation-${stdver}`;
+		return result;
+	},
+
 	getItem(rarity, banner, indexOfBanner) {
 		const date = new Date();
 		const time = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
 		const resultObj = { time, banner };
 
+		if (banner === 'member') return { ...resultObj, ...this._memberWish(rarity) };
 		if (banner === 'beginner') return { ...resultObj, ...this._beginnerWish(rarity) };
 		if (banner === 'standard') return { ...resultObj, ...this._standardWish(rarity) };
 		if (banner === 'weapon-event') return { ...resultObj, ...this._weaponWish(rarity) };
