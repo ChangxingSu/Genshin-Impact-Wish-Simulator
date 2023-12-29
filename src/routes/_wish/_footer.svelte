@@ -14,7 +14,8 @@
 		multipull,
 		editorMode,
 		preloadVersion,
-		editID
+		editID,
+
 	} from '$lib/store/app-stores';
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import { isNewOutfitReleased } from '$lib/helpers/outfit';
@@ -26,6 +27,7 @@
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 	import EpitomizedButton from './epitomized-path/_button.svelte';
 	import BannerPublisher from '../_custom-banner/Publisher.svelte';
+	import { memberDB } from '$lib/helpers/member-loader';
 
 	export let bannerType = 'beginner';
 
@@ -54,18 +56,24 @@
 	const roll = getContext('doRoll');
 	const handleSingleRollClick = () => {
 		if (bannerType === 'member') {
-			console.log('handleSingleRollClick');
-			// return;
+			if (!Array.isArray(memberDB) || memberDB.length == 0) {
+				alert("请点击左上角问号去上传名单");
+				return;
+			}
 		}
+		
 
 		playSfx('roll');
 		roll(1, bannerType);
 	};
 	const handleMultiRollClick = () => {
 		if (bannerType === 'member') {
-			console.log('handleMultiRollClick');
-			// return;
+			if (!Array.isArray(memberDB) || memberDB.length == 0) {
+				alert("请点击左上角问号去上传名单");
+				return;
+			}
 		}
+
 		playSfx('roll');
 		roll(isBeginner ? 10 : $multipull, bannerType);
 	};

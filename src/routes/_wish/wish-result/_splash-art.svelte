@@ -89,6 +89,7 @@
 		word-wrap: break-word;
 		line-height: 85%;
 		color: #1e1e1e;
+		filter: drop-shadow(0.2rem 0.2rem 0.02rem rgb(0, 0, 0));
 	}
 
 	img {

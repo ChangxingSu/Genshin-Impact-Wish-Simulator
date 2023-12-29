@@ -6,6 +6,9 @@
 	import { playSfx } from '$lib/helpers/audio/audio';
 	import Icon from '$lib/components/Icon.svelte';
 	import SvgIcon from '$lib/components/SVGIcon.svelte';
+	import { each } from 'svelte/internal';
+	import changebanner from '$lib/helpers/audio/changebanner';
+	import Header from '../_header.svelte';
 
 	export let index;
 	export let clientHeight;
@@ -24,8 +27,14 @@
 		bonusQty,
 		useOutfit,
 		outfitName,
-		custom
+		custom,
+		chineseChar
 	} = data;
+
+	const getCssVarPercent = (l, i) => {
+		const pos = Math.floor(100 / (l + 1) * (i + 1));
+		return `top: ${pos}%;`
+	}
 </script>
 
 <div
@@ -46,6 +55,18 @@
 				<div class="zoomist-image" style={getCssVarPosition(wishCard, clientHeight, clientWidth)}>
 					<img src={artURL} alt={name} class="wishpic" crossorigin="anonymous" />
 				</div>
+
+			{:else if type === 'member'}
+				{#each chineseChar as c, i}
+					<p id="chinese-char" style={getCssVarPercent(chineseChar.length, i)}>{c}</p>
+				{/each}
+				
+				<!-- <div class="zoomist-image weapon">
+					
+				</div>
+				<div class="zoomist-image weapon">
+					<p id="chinese-char">fff1</p>
+				</div> -->
 
 				<!-- Weapon -->
 			{:else if type === 'weapon'}
@@ -206,6 +227,17 @@
 		width: 100%;
 		height: 50%;
 		background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0));
+	}
+
+	#chinese-char {
+		font-family: 'AaQiShu';
+		position: absolute;
+		/* top: 44%; */
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 15vh;
+		color: #2f2e2f;
+		filter: drop-shadow(0.2rem 0.2rem 0.02rem rgb(0, 0, 0))
 	}
 
 	.zoomist-image {

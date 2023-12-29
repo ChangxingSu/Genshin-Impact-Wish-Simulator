@@ -8,7 +8,6 @@
 
 	export let standalone = false;
 	export let list = [];
-	export let bannerType = "";
 	let clientHeight;
 	let clientWidth;
 	let container;

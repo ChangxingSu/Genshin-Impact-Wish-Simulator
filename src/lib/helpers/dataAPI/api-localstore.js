@@ -30,6 +30,17 @@ export const storageLocal = {
 	}
 };
 
+export const localMemberList = {
+	get() {
+		return storageLocal.get('members'); 
+	},
+
+	set(ml) {
+		storageLocal.set('members', ml);
+	}
+}
+
+
 export const localPity = {
 	get(pityBanner) {
 		const pity = storageLocal.get('pity');
