@@ -5,7 +5,7 @@
 	import Toast from './Toast.svelte';
 </script>
 
-{#if $toastMsg}
+<!-- {#if $toastMsg}
 	<div class="toasts">
 		{#each $toastMsg as { type, id, dismissible, message, autoclose, timeout } (id)}
 			<div class="toast-item" animate:flip={{ duration: (i) => 25 * Math.sqrt(i) }}>
@@ -15,7 +15,7 @@
 			</div>
 		{/each}
 	</div>
-{/if}
+{/if} -->
 
 <style>
 	.toasts {

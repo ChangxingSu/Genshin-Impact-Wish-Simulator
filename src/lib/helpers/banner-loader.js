@@ -1,5 +1,6 @@
 import { beginner } from '$lib/data/banners/beginner.json';
 import { standard } from '$lib/data/banners/standard.json';
+import { member } from '$lib/data/banners/member.json';
 import { version, wishPhase } from '$lib/data/wish-setup.json';
 
 import { imageCDN } from './assets';
@@ -84,12 +85,15 @@ export const initializeBanner = async ({ patch, phase }) => {
 		const { banners } = data.find((b) => b.phase === phase);
 		const { events, weapons, standardVersion: stdver } = banners;
 		const { featured: stdFeatured } = standard.find(({ version }) => stdver === version) || {};
-
+		const { featured: memFeatured } = standard.find(({ version }) => stdver === version) || {};
 		const charEventBanner = {
 			type: 'character-event',
 			rateup: events.rateup,
 			stdver
 		};
+
+		list.push({ type: 'standard', stdver, ...memFeatured});
+
 		events.featured.forEach((eventdata) => list.push({ ...eventdata, ...charEventBanner }));
 		list.push({ type: 'weapon-event', stdver, ...weapons });
 		list.push({ type: 'standard', stdver, ...stdFeatured });
