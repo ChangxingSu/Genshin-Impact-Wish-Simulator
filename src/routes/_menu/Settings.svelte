@@ -12,6 +12,7 @@
 	import { check as meteorCheck } from '$lib/helpers/meteor-loader';
 	import { factoryReset } from '$lib/helpers/dataAPI/storage-reset';
 	import { pushToast } from '$lib/helpers/toast';
+	import { assets } from '$lib/store/app-stores';
 
 	import Modal from '$lib/components/ModalTpl.svelte';
 	import Icon from '$lib/components/Icon.svelte';
@@ -203,47 +204,10 @@
 		{$t('menu.animatedbg')}
 	</OptionMenu>
 
-	<OptionMenu name="switchBanner">{$t('menu.switchBanner')}</OptionMenu>
+	<!-- <OptionMenu name="switchBanner">{$t('menu.switchBanner')}</OptionMenu> -->
 
 	<OptionMenu name="reset">{$t('menu.factoryReset')}</OptionMenu>
 
-	<h2>Notes :</h2>
-	<div class="notes">
-		<ol>
-			<li>
-				I tried to create the simulator with pity system almost like the real game, the rate of
-				getting rare item will increase once you reach a certain pity depending on where banner you
-				pull. you can go <a
-					on:click|stopPropagation
-					href="https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator#pity-system"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Here
-				</a>
-				to find details of the probability. If you has any idea, please send me feedback by creating
-				<a
-					on:click|stopPropagation
-					href="https://github.com/AguzzTN54/Genshin-Impact-Wish-Simulator/issues"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					new issue here
-				</a>
-			</li>
-			<li>
-				This app use Localstorage and IndexedDB to save your pull history, it's native on your
-				browser, if you clear your browser data, you will lost your data that related to this app
-				too. No chance to recover it back, because we never store your data on cloud
-			</li>
-			<li>
-				This App does not collect or store any personally identifiable information about you.
-				However, this app use third party services that may collect information used to identify
-				you. The information that these third party services request will be retained on your device
-				and is not collected by me in any way.
-			</li>
-		</ol>
-	</div>
 </div>
 
 <style>

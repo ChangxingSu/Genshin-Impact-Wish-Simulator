@@ -228,21 +228,21 @@
 	<svelte:component this={ModalConvert} />
 {/if}
 
-{#if chatLoaded}
+<!-- {#if chatLoaded}
 	<svelte:component this={Feedback} show={showChat} />
-{/if}
+{/if} -->
 
 {#if showWelkinScreen}
 	<WelkinCheckin />
 {/if}
 
-{#if showWelcomeModal}
+<!-- {#if showWelcomeModal}
 	{#if shareID}
 		<ModalInitBanner {shareID} />
 	{:else}
 		<ModalWelcome />
 	{/if}
-{/if}
+{/if} -->
 
 <PreloadMeteor />
 

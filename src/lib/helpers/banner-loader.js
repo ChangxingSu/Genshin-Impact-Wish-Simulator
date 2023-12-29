@@ -66,8 +66,9 @@ const useCustomBanner = async (bannerID) => {
 };
 
 const checkBeginnerBanner = () => {
-	const starterRollCount = rollCounter.get('beginner');
-	const isShowBeginner = starterRollCount < 20;
+	// const starterRollCount = rollCounter.get('beginner');
+	// const isShowBeginner = starterRollCount < 20;
+	const isShowBeginner = false;
 	showBeginner.set(isShowBeginner);
 	return isShowBeginner;
 };
