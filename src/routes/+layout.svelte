@@ -151,7 +151,7 @@
 		<link rel="manifest" href="/appmanifest.json" />
 	{/if}
 
-	<Iklan head />
+	<!-- <Iklan head /> -->
 </svelte:head>
 
 <Loader {isBannerLoaded} {directLoad} />
@@ -176,7 +176,7 @@
 		class="uid"
 		title="Try Your Luck by this Simulator"
 	>
-		WishSimulator.App
+		<!-- WishSimulator.App -->
 	</a>
 </main>
 
