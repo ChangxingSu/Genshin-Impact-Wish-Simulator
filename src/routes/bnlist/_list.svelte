@@ -4,7 +4,7 @@
 	import { imageCDN } from '$lib/helpers/assets';
 	import { lazyLoad } from '$lib/helpers/lazyload';
 	import { timeAgo } from '$lib/helpers/timeago';
-	import { onlineBanner } from '$lib/helpers/custom-banner';
+	import { onlineBanner } from '$lib/helpers/banner-custom';
 	import ButtonGeneral from '$lib/components/ButtonGeneral.svelte';
 	import Pagination from '../_gachainfo/history/_pagination.svelte';
 
@@ -38,7 +38,8 @@
 			// customList = data.sort(({ lastModified: a }, { lastModified: b }) => {
 			// 	return new Date(b) - new Date(a);
 			// });
-			customList = window._.orderBy(data, ['lastModified'], ['desc']);
+			const dataToShow = data.filter(({ bannerName }) => bannerName);
+			customList = window._.orderBy(dataToShow, ['lastModified'], ['desc']);
 		} catch (e) {
 			console.error(e);
 			customList = [];
