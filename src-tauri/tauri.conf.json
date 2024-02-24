@@ -11,16 +11,10 @@
   },
   "tauri": {
     "allowlist": {
+      "all": false,
       "shell": {
         "all": false,
-        "ask": true,
-        "open": true,
-        "confirm": true,
-        "message": true,
-        "save": true
-      },
-      "window":{
-        "setFullscreen": true
+        "open": true
       }
     },
     "windows": [
